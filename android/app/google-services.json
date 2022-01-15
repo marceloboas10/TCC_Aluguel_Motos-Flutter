@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "673292915704",
+    "project_id": "aluguel-moto-tcc",
+    "storage_bucket": "aluguel-moto-tcc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673292915704:android:aa23fce90ccdb873afbc0d",
+        "android_client_info": {
+          "package_name": "com.example.aluguel_moto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673292915704-9in5oglj87icvhth6nt9qepr0600frsm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxOfZhMvcMTcPfok8tXXhk87MRuKxvaxk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "673292915704-9in5oglj87icvhth6nt9qepr0600frsm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
