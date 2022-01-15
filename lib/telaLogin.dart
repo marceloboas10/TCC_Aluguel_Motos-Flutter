@@ -105,7 +105,7 @@ class _TelaLoginState extends State<TelaLogin> {
       ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('$mensagem'),
-            duration: Duration(seconds: 2)
+            duration: Duration(seconds: 4)
           )
         );
     });
