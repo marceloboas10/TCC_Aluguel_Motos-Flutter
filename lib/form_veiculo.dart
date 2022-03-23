@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -12,12 +11,14 @@ class _FormVeiculoState extends State<FormVeiculo> {
   var txtModelo = TextEditingController();
   var txtAno = TextEditingController();
   var txtPlaca = TextEditingController();
-  
+
   //RECUPERA DOCUMENTO
-  void getDocumentById(String id) async{
+  void getDocumentById(String id) async {
     await FirebaseFirestore.instance
-    .collection('veiculos').doc(id).get()
-    .then((valor){
+        .collection('veiculos')
+        .doc(id)
+        .get()
+        .then((valor) {
       txtFabricante.text = valor.get('Fabricante');
       txtModelo.text = valor.get('Modelo');
       txtAno.text = valor.get('Ano');
@@ -27,11 +28,13 @@ class _FormVeiculoState extends State<FormVeiculo> {
 
   @override
   Widget build(BuildContext context) {
-
     var id = ModalRoute.of(context)?.settings.arguments;
 
-    if (id != null){
-      if (txtFabricante.text == '' && txtModelo.text == '' && txtAno.text == '' && txtPlaca.text == ''){
+    if (id != null) {
+      if (txtFabricante.text == '' &&
+          txtModelo.text == '' &&
+          txtAno.text == '' &&
+          txtPlaca.text == '') {
         getDocumentById(id.toString());
       }
     }
@@ -40,7 +43,7 @@ class _FormVeiculoState extends State<FormVeiculo> {
       appBar: AppBar(
         title: Text('Cadastro Veículo'),
         centerTitle: true,
-        
+        backgroundColor: Colors.blueGrey,
       ),
       body: Container(
         padding: EdgeInsets.all(30),
@@ -54,7 +57,6 @@ class _FormVeiculoState extends State<FormVeiculo> {
             ),
           ),
           SizedBox(height: 20),
-
           TextField(
             controller: txtModelo,
             style: TextStyle(color: Colors.black, fontSize: 18),
@@ -64,7 +66,6 @@ class _FormVeiculoState extends State<FormVeiculo> {
             ),
           ),
           SizedBox(height: 20),
-
           TextField(
             controller: txtAno,
             style: TextStyle(color: Colors.black, fontSize: 18),
@@ -74,7 +75,6 @@ class _FormVeiculoState extends State<FormVeiculo> {
             ),
           ),
           SizedBox(height: 20),
-
           TextField(
             controller: txtPlaca,
             style: TextStyle(color: Colors.black, fontSize: 18),
@@ -84,7 +84,6 @@ class _FormVeiculoState extends State<FormVeiculo> {
             ),
           ),
           SizedBox(height: 20),
-
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -93,32 +92,27 @@ class _FormVeiculoState extends State<FormVeiculo> {
                 width: 150,
                 child: OutlinedButton(
                   child: Text('salvar'),
-                  onPressed: (){
-
+                  onPressed: () {
                     var db = FirebaseFirestore.instance;
 
-                    if (id == null){
-                    //ADICIONAR UM NOVO DOCUMENTO
-                    var db = FirebaseFirestore.instance;
-                    db.collection('veiculos').add(
-                      {
-                        'Fabricante'      : txtFabricante.text,
-                        'Modelo'          : txtModelo.text,
-                        'Ano'             : txtAno.text,
-                        'Placa'           : txtPlaca.text,   
-                      }
-                    );
-                  }else{
-                    //ATUALIZA DOCUMENTO
-                    db.collection('veiculos').doc(id.toString()).update(
-                      {
-                        'Fabricante'      : txtFabricante.text,
-                        'Modelo'          : txtModelo.text,
-                        'Ano'             : txtAno.text,
-                        'Placa'           : txtPlaca.text,
-                      }
-                    );
-                  }
+                    if (id == null) {
+                      //ADICIONAR UM NOVO DOCUMENTO
+                      var db = FirebaseFirestore.instance;
+                      db.collection('veiculos').add({
+                        'Fabricante': txtFabricante.text,
+                        'Modelo': txtModelo.text,
+                        'Ano': txtAno.text,
+                        'Placa': txtPlaca.text,
+                      });
+                    } else {
+                      //ATUALIZA DOCUMENTO
+                      db.collection('veiculos').doc(id.toString()).update({
+                        'Fabricante': txtFabricante.text,
+                        'Modelo': txtModelo.text,
+                        'Ano': txtAno.text,
+                        'Placa': txtPlaca.text,
+                      });
+                    }
                     Navigator.pop(context);
                   },
                 ),
@@ -128,7 +122,7 @@ class _FormVeiculoState extends State<FormVeiculo> {
                 width: 150,
                 child: OutlinedButton(
                   child: Text('cancelar'),
-                  onPressed: (){
+                  onPressed: () {
                     Navigator.pop(context);
                   },
                 ),

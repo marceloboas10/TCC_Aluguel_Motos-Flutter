@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class Sobre extends StatefulWidget {
@@ -8,23 +10,80 @@ class Sobre extends StatefulWidget {
 class _SobreState extends State<Sobre> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Sobre'),
-        centerTitle: true,
-      ),
-      backgroundColor: Colors.blueGrey[500],
-      body: Padding(
-        padding: EdgeInsets.all(10),
-        child: Center(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        backgroundColor: Colors.deepOrange,
+        body: SafeArea(
           child: Column(
-            children: <Widget>[
-              Image.asset('lib/imagens/marcelo.jpg', height: 169,),
-              Text('Marcelo Henrique Vilas Boas', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold,),),
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                backgroundImage: AssetImage('lib/imagens/marcelo.jpg'),
+                radius: 80,
+              ),
               Divider(),
-              Text('Projeto de TCC - Aplicativo para gestão de aluguel de motos desenvolvido em linguagem Flutter.\n\n'
-              'Curso: Análise e Desenvolvimento de Sistemas - FATEC Ribeirão Preto.\n\n'
-              'Disciplina: Programação Para Dispositivos Móveis', style: TextStyle(fontSize: 20,),),
+              Text(
+                'Marcelo Vilas Boas',
+                style: TextStyle(
+                    fontSize: 25,
+                    fontFamily: 'Verdana',
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
+              ),
+              Text(
+                'Desenvolvedor Flutter',
+                style: TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'Times New Roman',
+                    color: Colors.deepOrange.shade100,
+                    letterSpacing: 2.5,
+                    fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 20,
+                width: 250,
+                child: Divider(
+                  color: Colors.deepOrange.shade100,
+                ),
+              ),
+              Card(
+                margin: EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 30,
+                ),
+                child: ListTile(
+                  leading: Icon(
+                    Icons.phone,
+                    size: 25,
+                    color: Colors.deepOrange,
+                  ),
+                  title: Text(
+                    '(16)99135-4260',
+                    style: TextStyle(
+                      color: Colors.deepOrange,
+                      fontFamily: 'SourceSensPro',
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+                child: ListTile(
+                  leading: Icon(
+                    Icons.email,
+                    color: Colors.deepOrange,
+                    size: 25,
+                  ),
+                  title: Text(
+                    'marcelo.boas@fatec.sp.gov.br',
+                    style: TextStyle(
+                        color: Colors.deepOrange,
+                        fontSize: 18,
+                        fontFamily: 'SourceSansPro,'),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
