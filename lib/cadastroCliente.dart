@@ -48,6 +48,7 @@ class _CadastroClienteState extends State<CadastroCliente> {
       child: Scaffold(
         appBar: AppBar(
           title: Text('Clientes'),
+          backgroundColor: Colors.blueGrey,
           centerTitle: true,
         ),
 
