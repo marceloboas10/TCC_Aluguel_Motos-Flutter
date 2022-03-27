@@ -50,7 +50,7 @@ class _SobreState extends State<Sobre> {
               Card(
                 margin: EdgeInsets.symmetric(
                   vertical: 10,
-                  horizontal: 30,
+                  horizontal: 28,
                 ),
                 child: ListTile(
                   leading: Icon(
@@ -68,7 +68,7 @@ class _SobreState extends State<Sobre> {
                 ),
               ),
               Card(
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 28),
                 child: ListTile(
                   leading: Icon(
                     Icons.email,

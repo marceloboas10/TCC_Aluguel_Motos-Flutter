@@ -1,6 +1,7 @@
 import 'package:aluguel_moto/cadastroConta.dart';
 import 'package:aluguel_moto/form_veiculo.dart';
 import 'package:aluguel_moto/prototipo/loginP.dart';
+import 'package:aluguel_moto/prototipo/menuP.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:aluguel_moto/cadastroCliente.dart';
@@ -18,7 +19,7 @@ Future<void> main() async {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     //theme: ThemeData(primarySwatch: Colors.amber),
-    initialRoute: '/menu',
+    initialRoute: '/menuP',
     routes: {
       '/telaLogin': (context) => TelaLogin(),
       '/cadastroConta': (context) => CadastroConta(),
@@ -29,6 +30,7 @@ Future<void> main() async {
       '/form_veiculo': (context) => FormVeiculo(),
       '/sobre': (context) => Sobre(),
       '/loginP': (context) => LoginP(),
+      '/menuP': (context) => MenuP(),
     },
   ));
 }
