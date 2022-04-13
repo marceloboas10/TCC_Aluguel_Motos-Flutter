@@ -19,7 +19,7 @@ Future<void> main() async {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     //theme: ThemeData(primarySwatch: Colors.amber),
-    initialRoute: '/menuP',
+    initialRoute: '/telaLogin',
     routes: {
       '/telaLogin': (context) => TelaLogin(),
       '/cadastroConta': (context) => CadastroConta(),

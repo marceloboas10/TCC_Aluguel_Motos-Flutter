@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class FormCliente extends StatefulWidget {
   @override
@@ -62,6 +63,7 @@ class _FormClienteState extends State<FormCliente> {
             controller: txtNome,
             style: TextStyle(color: Colors.black, fontSize: 18),
             decoration: InputDecoration(
+              border: OutlineInputBorder(),
               labelText: 'Nome',
               labelStyle: TextStyle(color: Colors.black, fontSize: 16),
             ),
@@ -71,24 +73,31 @@ class _FormClienteState extends State<FormCliente> {
             controller: txtRg,
             style: TextStyle(color: Colors.black, fontSize: 18),
             decoration: InputDecoration(
+              border: OutlineInputBorder(),
               labelText: 'RG',
               labelStyle: TextStyle(color: Colors.black, fontSize: 16),
             ),
+            keyboardType: TextInputType.number,
+            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
           ),
           SizedBox(height: 10),
           TextField(
             controller: txtCpf,
             style: TextStyle(color: Colors.black, fontSize: 18),
             decoration: InputDecoration(
+              border: OutlineInputBorder(),
               labelText: 'CPF',
               labelStyle: TextStyle(color: Colors.black, fontSize: 16),
             ),
+            keyboardType: TextInputType.number,
+            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
           ),
           SizedBox(height: 10),
           TextField(
             controller: txtEndereco,
             style: TextStyle(color: Colors.black, fontSize: 18),
             decoration: InputDecoration(
+              border: OutlineInputBorder(),
               labelText: 'Endereço',
               labelStyle: TextStyle(color: Colors.black, fontSize: 16),
             ),
@@ -98,15 +107,19 @@ class _FormClienteState extends State<FormCliente> {
             controller: txtTelefone,
             style: TextStyle(color: Colors.black, fontSize: 18),
             decoration: InputDecoration(
+              border: OutlineInputBorder(),
               labelText: 'Telefone',
               labelStyle: TextStyle(color: Colors.black, fontSize: 16),
             ),
+            keyboardType: TextInputType.number,
+            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
           ),
           SizedBox(height: 10),
           TextField(
             controller: txtMoto,
             style: TextStyle(color: Colors.black, fontSize: 18),
             decoration: InputDecoration(
+              border: OutlineInputBorder(),
               labelText: 'Moto',
               labelStyle: TextStyle(color: Colors.black, fontSize: 16),
             ),
@@ -116,6 +129,7 @@ class _FormClienteState extends State<FormCliente> {
             controller: txtPlaca,
             style: TextStyle(color: Colors.black, fontSize: 18),
             decoration: InputDecoration(
+              border: OutlineInputBorder(),
               labelText: 'Placa',
               labelStyle: TextStyle(color: Colors.black, fontSize: 16),
             ),

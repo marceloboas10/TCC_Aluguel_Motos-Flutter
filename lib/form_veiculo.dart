@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class FormVeiculo extends StatefulWidget {
   @override
@@ -46,12 +47,13 @@ class _FormVeiculoState extends State<FormVeiculo> {
         backgroundColor: Colors.blueGrey,
       ),
       body: Container(
-        padding: EdgeInsets.all(30),
+        padding: EdgeInsets.fromLTRB(30, 70, 30, 30),
         child: ListView(children: [
           TextField(
             controller: txtFabricante,
             style: TextStyle(color: Colors.black, fontSize: 18),
             decoration: InputDecoration(
+              border: OutlineInputBorder(),
               labelText: 'Fabricante',
               labelStyle: TextStyle(color: Colors.black, fontSize: 16),
             ),
@@ -61,6 +63,7 @@ class _FormVeiculoState extends State<FormVeiculo> {
             controller: txtModelo,
             style: TextStyle(color: Colors.black, fontSize: 18),
             decoration: InputDecoration(
+              border: OutlineInputBorder(),
               labelText: 'Modelo',
               labelStyle: TextStyle(color: Colors.black, fontSize: 16),
             ),
@@ -70,15 +73,19 @@ class _FormVeiculoState extends State<FormVeiculo> {
             controller: txtAno,
             style: TextStyle(color: Colors.black, fontSize: 18),
             decoration: InputDecoration(
+              border: OutlineInputBorder(),
               labelText: 'Ano',
               labelStyle: TextStyle(color: Colors.black, fontSize: 16),
             ),
+            keyboardType: TextInputType.number,
+            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
           ),
           SizedBox(height: 20),
           TextField(
             controller: txtPlaca,
             style: TextStyle(color: Colors.black, fontSize: 18),
             decoration: InputDecoration(
+              border: OutlineInputBorder(),
               labelText: 'Placa',
               labelStyle: TextStyle(color: Colors.black, fontSize: 16),
             ),

@@ -112,20 +112,20 @@ class _MenuPState extends State<MenuP> {
               }),
         ],
       ),
-      backgroundColor: Colors.blueGrey[700],
+      backgroundColor: Colors.white,
       body: Container(
         padding: EdgeInsets.all(40),
         child: ListView(children: [
           ListTile(
             leading: Icon(
               Icons.account_circle,
-              color: Colors.white,
+              color: Colors.black87,
             ),
             title: Text(
               'Clientes',
               style: TextStyle(
                 fontSize: 25,
-                color: Colors.white,
+                color: Colors.black87,
               ),
             ),
             onTap: () {
@@ -135,12 +135,12 @@ class _MenuPState extends State<MenuP> {
           ListTile(
             leading: Icon(
               Icons.two_wheeler_rounded,
-              color: Colors.white,
+              color: Colors.black87,
             ),
             title: Text('Veículos',
                 style: TextStyle(
                   fontSize: 25,
-                  color: Colors.white,
+                  color: Colors.black87,
                 )),
             onTap: () {
               Navigator.pushNamed(context, '/cadastroVeiculo');
@@ -148,13 +148,13 @@ class _MenuPState extends State<MenuP> {
           ),
           ListTile(
             leading: Icon(
-              Icons.support_agent_outlined,
-              color: Colors.white,
+              Icons.support_agent,
+              color: Colors.black87,
             ),
             title: Text('Suporte',
                 style: TextStyle(
                   fontSize: 25,
-                  color: Colors.white,
+                  color: Colors.black87,
                 )),
             onTap: () {
               Navigator.pushNamed(context, '/sobre');
