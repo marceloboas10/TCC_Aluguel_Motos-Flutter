@@ -23,7 +23,7 @@ class _TelaMenuState extends State<TelaMenu> {
               }),
         ],
       ),
-      backgroundColor: Colors.blueGrey[700],
+      backgroundColor: Color(0x4B0082),
       body: Container(
         padding: EdgeInsets.all(40),
         child: ListView(children: [

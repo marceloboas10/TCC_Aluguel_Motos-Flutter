@@ -13,7 +13,7 @@ class _MenuPState extends State<MenuP> {
     final drawerHeader = UserAccountsDrawerHeader(
       accountName: Text('Marcelo Vilas Boas'),
       accountEmail: Text('marcelo.boas@fatec.sp.gov.br'),
-      decoration: BoxDecoration(color: Colors.blueGrey),
+      decoration: BoxDecoration(color: Colors.purple[700]),
       currentAccountPicture: CircleAvatar(
         child: FlutterLogo(size: 42.0),
         backgroundColor: Colors.white,
@@ -102,7 +102,7 @@ class _MenuPState extends State<MenuP> {
       appBar: AppBar(
         title: Text('Menu'),
         centerTitle: true,
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: Colors.cyan[600],
         actions: [
           IconButton(
               icon: Icon(Icons.logout),

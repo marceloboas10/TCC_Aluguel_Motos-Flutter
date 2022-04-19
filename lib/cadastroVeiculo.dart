@@ -54,7 +54,7 @@ class _CadastroVeiculoState extends State<CadastroVeiculo> {
       appBar: AppBar(
         title: Text('Veículos'),
         centerTitle: true,
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: Colors.lightBlueAccent[400],
       ),
 
       //EXIBE OS DOCUMENTOS DA COLEÇÃO "CLIENTES"
