@@ -1,15 +1,15 @@
-import 'package:aluguel_moto/cadastroConta.dart';
-import 'package:aluguel_moto/form_veiculo.dart';
+import 'package:aluguel_moto/cadastros/cadastroConta.dart';
+import 'package:aluguel_moto/formularios/form_veiculo.dart';
 import 'package:aluguel_moto/prototipo/loginP.dart';
 import 'package:aluguel_moto/prototipo/menuP.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:aluguel_moto/cadastroCliente.dart';
-import 'package:aluguel_moto/cadastroVeiculo.dart';
-import 'package:aluguel_moto/form_cliente.dart';
-import 'package:aluguel_moto/telaLogin.dart';
-import 'package:aluguel_moto/menu.dart';
-import 'package:aluguel_moto/sobre.dart';
+import 'package:aluguel_moto/cadastros/cadastroCliente.dart';
+import 'package:aluguel_moto/cadastros/cadastroVeiculo.dart';
+import 'package:aluguel_moto/formularios/form_cliente.dart';
+import 'package:aluguel_moto/telas/telaLogin.dart';
+import 'package:aluguel_moto/telas/menu.dart';
+import 'package:aluguel_moto/telas/sobre.dart';
 
 Future<void> main() async {
   //Registrar Firebase
