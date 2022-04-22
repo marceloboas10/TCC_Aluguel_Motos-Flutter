@@ -53,11 +53,11 @@ class _MenuPState extends State<MenuP> {
         ),
         ListTile(
           leading: Icon(
-            Icons.alarm_outlined,
+            Icons.monetization_on_outlined,
             color: Colors.black,
           ),
           title: Text(
-            'Lembretes',
+            'Pagamentos',
             style: TextStyle(
               fontSize: 18,
               color: Colors.black,
@@ -71,7 +71,21 @@ class _MenuPState extends State<MenuP> {
             color: Colors.black,
           ),
           title: Text(
-            'Pagamentos',
+            'Multas',
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.black,
+            ),
+          ),
+          onTap: () => Navigator.pushNamed(context, ''),
+        ),
+        ListTile(
+          leading: Icon(
+            Icons.alarm_outlined,
+            color: Colors.black,
+          ),
+          title: Text(
+            'Lembretes',
             style: TextStyle(
               fontSize: 18,
               color: Colors.black,
@@ -115,52 +129,54 @@ class _MenuPState extends State<MenuP> {
       backgroundColor: Colors.white,
       body: Container(
         padding: EdgeInsets.all(40),
-        child: ListView(children: [
-          ListTile(
-            leading: Icon(
-              Icons.account_circle,
-              color: Colors.black87,
-            ),
-            title: Text(
-              'Clientes',
-              style: TextStyle(
-                fontSize: 25,
+        child: ListView(
+          children: [
+            ListTile(
+              leading: Icon(
+                Icons.account_circle,
                 color: Colors.black87,
               ),
-            ),
-            onTap: () {
-              Navigator.pushNamed(context, '/cadastroCliente');
-            },
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.two_wheeler_rounded,
-              color: Colors.black87,
-            ),
-            title: Text('Veículos',
+              title: Text(
+                'Clientes',
                 style: TextStyle(
                   fontSize: 25,
                   color: Colors.black87,
-                )),
-            onTap: () {
-              Navigator.pushNamed(context, '/cadastroVeiculo');
-            },
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.support_agent,
-              color: Colors.black87,
+                ),
+              ),
+              onTap: () {
+                Navigator.pushNamed(context, '/cadastroCliente');
+              },
             ),
-            title: Text('Suporte',
-                style: TextStyle(
-                  fontSize: 25,
-                  color: Colors.black87,
-                )),
-            onTap: () {
-              Navigator.pushNamed(context, '/sobre');
-            },
-          ),
-        ]),
+            ListTile(
+              leading: Icon(
+                Icons.two_wheeler_rounded,
+                color: Colors.black87,
+              ),
+              title: Text('Veículos',
+                  style: TextStyle(
+                    fontSize: 25,
+                    color: Colors.black87,
+                  )),
+              onTap: () {
+                Navigator.pushNamed(context, '/cadastroVeiculo');
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.support_agent,
+                color: Colors.black87,
+              ),
+              title: Text('Suporte',
+                  style: TextStyle(
+                    fontSize: 25,
+                    color: Colors.black87,
+                  )),
+              onTap: () {
+                Navigator.pushNamed(context, '/sobre');
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
