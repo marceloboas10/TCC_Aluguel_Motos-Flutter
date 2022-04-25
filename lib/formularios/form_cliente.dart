@@ -54,7 +54,7 @@ class _FormClienteState extends State<FormCliente> {
       appBar: AppBar(
         title: Text('Cadastro Cliente'),
         centerTitle: true,
-        backgroundColor: Colors.lightBlueAccent[400],
+        backgroundColor: Colors.cyan[600],
       ),
       body: Container(
         padding: EdgeInsets.all(30),

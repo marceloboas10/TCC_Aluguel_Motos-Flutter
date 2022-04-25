@@ -10,6 +10,7 @@ import 'package:aluguel_moto/formularios/form_cliente.dart';
 import 'package:aluguel_moto/telas/telaLogin.dart';
 import 'package:aluguel_moto/telas/menu.dart';
 import 'package:aluguel_moto/telas/sobre.dart';
+import 'cadastros/cadastroLembretes.dart';
 
 Future<void> main() async {
   //Registrar Firebase
@@ -19,7 +20,7 @@ Future<void> main() async {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     //theme: ThemeData(primarySwatch: Colors.amber),
-    initialRoute: '/menuP',
+    initialRoute: '/telaLogin',
     routes: {
       '/telaLogin': (context) => TelaLogin(),
       '/cadastroConta': (context) => CadastroConta(),
@@ -28,9 +29,11 @@ Future<void> main() async {
       '/form_cliente': (context) => FormCliente(),
       '/cadastroVeiculo': (context) => CadastroVeiculo(),
       '/form_veiculo': (context) => FormVeiculo(),
+      '/cadastroLembretes': (context) => CadastroLembretes(),
       '/sobre': (context) => Sobre(),
       '/loginP': (context) => LoginP(),
       '/menuP': (context) => MenuP(),
+      '/cadastro': (context) => TelaCadastro(),
     },
   ));
 }

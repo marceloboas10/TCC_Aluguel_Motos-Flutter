@@ -14,73 +14,78 @@ class _TelaLoginState extends State<TelaLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey[700],
+      backgroundColor: Color.fromRGBO(119, 136, 153, 1),
       body: Padding(
-        padding: EdgeInsets.all(5),
+        padding: EdgeInsets.all(16),
         child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Image.asset(
-                'lib/imagens/logo.png',
-                height: 116,
+                'lib/imagens/logo1.png',
+                height: 100,
               ),
+              Padding(padding: EdgeInsets.only(top: 15)),
               TextField(
-                autofocus: true,
                 controller: txtEmail,
-                style: new TextStyle(color: Colors.white, fontSize: 15),
+                style: new TextStyle(color: Colors.white, fontSize: 13),
                 decoration: InputDecoration(
-                    icon: Icon(
-                      Icons.person,
-                      color: Colors.white,
-                    ),
-                    labelText: "Usuário",
-                    labelStyle: TextStyle(color: Colors.white)),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(12))),
+                  labelText: "Usuário",
+                  prefixIcon: Icon(
+                    Icons.person,
+                    color: Colors.white,
+                  ),
+                  labelStyle: TextStyle(color: Colors.white),
+                ),
               ),
               Divider(),
               TextField(
-                autofocus: true,
                 obscureText: true,
                 controller: txtSenha,
-                style: new TextStyle(color: Colors.white, fontSize: 15),
+                style: new TextStyle(color: Colors.white, fontSize: 13),
                 decoration: InputDecoration(
-                    icon: Icon(
-                      Icons.password,
-                      color: Colors.white,
-                    ),
-                    labelText: "Senha",
-                    labelStyle: TextStyle(color: Colors.white)),
-              ),
-              Divider(),
-              ButtonTheme(
-                height: 30,
-                child: ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      isloading = true;
-                    });
-                    login(txtEmail.text, txtSenha.text);
-                  },
-                  child: Text(
-                    "Entrar",
-                    style: TextStyle(color: Colors.white),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                    Radius.circular(12),
+                  )),
+                  labelText: "Senha",
+                  prefixIcon: Icon(
+                    Icons.lock_sharp,
+                    color: Colors.white,
                   ),
+                  labelStyle: TextStyle(color: Colors.white),
                 ),
               ),
               Divider(),
-              Divider(),
-              ButtonTheme(
-                height: 30,
-                child: ElevatedButton(
-                  child: Text(
-                    "Criar Conta",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/cadastroConta');
-                  },
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    isloading = true;
+                  });
+                  login(txtEmail.text, txtSenha.text);
+                },
+                child: Text(
+                  "Entrar",
+                  style: TextStyle(color: Colors.white),
                 ),
+                style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.red[700])),
+              ),
+              ElevatedButton(
+                child: Text(
+                  "Criar Conta",
+                  style: TextStyle(color: Colors.white),
+                ),
+                style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.red[600])),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/cadastroConta');
+                },
               ),
             ],
           ),

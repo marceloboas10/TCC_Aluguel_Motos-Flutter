@@ -48,7 +48,7 @@ class _CadastroClienteState extends State<CadastroCliente> {
       child: Scaffold(
         appBar: AppBar(
           title: Text('Clientes'),
-          backgroundColor: Colors.blueGrey,
+          backgroundColor: Colors.cyan[600],
           centerTitle: true,
         ),
 
@@ -84,7 +84,7 @@ class _CadastroClienteState extends State<CadastroCliente> {
 
         floatingActionButton: FloatingActionButton(
           foregroundColor: Colors.white,
-          backgroundColor: Colors.blueGrey,
+          backgroundColor: Colors.cyan[600],
           child: Icon(Icons.add),
           onPressed: () {
             Navigator.pushNamed(context, '/form_cliente');

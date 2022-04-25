@@ -47,7 +47,7 @@ class _FormVeiculoState extends State<FormVeiculo> {
       appBar: AppBar(
         title: Text('Cadastro Veículo'),
         centerTitle: true,
-        backgroundColor: Colors.lightBlueAccent[400],
+        backgroundColor: Colors.cyan[600],
       ),
       body: Container(
         padding: EdgeInsets.fromLTRB(30, 70, 30, 30),
