@@ -1,3 +1,4 @@
+import 'package:aluguel_moto/formularios/campos_formulario/campos_formulario.dart';
 import 'package:aluguel_moto/model/lembretes.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -140,67 +141,57 @@ class _TelaCadastroState extends State<TelaCadastro> {
       backgroundColor: Colors.brown[50],
       body: Container(
         padding: EdgeInsets.all(30),
-        child: ListView(children: [
-          TextField(
-            controller: txtServico,
-            style: TextStyle(color: Colors.black, fontSize: 20),
-            decoration: InputDecoration(
-              labelText: 'Serviço',
-              labelStyle: TextStyle(color: Colors.black, fontSize: 22),
+        child: ListView(
+          children: [
+            CamposFormulario(nomeLabel: 'Serviço', nomeCampo: txtServico),
+            SizedBox(
+              height: 20,
             ),
-          ),
-          SizedBox(height: 30),
-          TextField(
-            controller: txtDescricao,
-            style: TextStyle(color: Colors.black, fontSize: 20),
-            decoration: InputDecoration(
-              labelText: 'Descrição',
-              labelStyle: TextStyle(color: Colors.black, fontSize: 22),
-            ),
-          ),
-          SizedBox(height: 50),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                padding: EdgeInsets.all(5),
-                width: 150,
-                child: OutlinedButton(
-                  child: Text('salvar'),
-                  onPressed: () {
-                    var db = FirebaseFirestore.instance;
-                    if (id == null) {
-                      //ADICIONAR um novo DOCUMENTO
+            CamposFormulario(nomeLabel: 'Descrição', nomeCampo: txtDescricao),
+            SizedBox(height: 50),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  padding: EdgeInsets.all(5),
+                  width: 150,
+                  child: OutlinedButton(
+                    child: Text('salvar'),
+                    onPressed: () {
                       var db = FirebaseFirestore.instance;
-                      db.collection('lembretes').add({
-                        'servico': txtServico.text,
-                        'descricao': txtDescricao.text,
-                      });
-                    } else {
-                      //ATUALIZAR documento
-                      db.collection('lembretes').doc(id.toString()).update({
-                        'servico': txtServico.text,
-                        'descricao': txtDescricao.text,
-                      });
-                    }
+                      if (id == null) {
+                        //ADICIONAR um novo DOCUMENTO
+                        var db = FirebaseFirestore.instance;
+                        db.collection('lembretes').add({
+                          'servico': txtServico.text,
+                          'descricao': txtDescricao.text,
+                        });
+                      } else {
+                        //ATUALIZAR documento
+                        db.collection('lembretes').doc(id.toString()).update({
+                          'servico': txtServico.text,
+                          'descricao': txtDescricao.text,
+                        });
+                      }
 
-                    Navigator.pop(context);
-                  },
+                      Navigator.pop(context);
+                    },
+                  ),
                 ),
-              ),
-              Container(
-                padding: EdgeInsets.all(5),
-                width: 150,
-                child: OutlinedButton(
-                  child: Text('cancelar'),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
+                Container(
+                  padding: EdgeInsets.all(5),
+                  width: 150,
+                  child: OutlinedButton(
+                    child: Text('cancelar'),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ]),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:aluguel_moto/formularios/campos_formulario/campos_formulario.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -59,81 +60,31 @@ class _FormClienteState extends State<FormCliente> {
       body: Container(
         padding: EdgeInsets.all(30),
         child: ListView(children: [
-          TextField(
-            controller: txtNome,
-            style: TextStyle(color: Colors.black, fontSize: 18),
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Nome',
-              labelStyle: TextStyle(color: Colors.black, fontSize: 16),
-            ),
-          ),
+          CamposFormulario(nomeLabel: 'Nome', nomeCampo: txtNome),
           SizedBox(height: 10),
-          TextField(
-            controller: txtRg,
-            style: TextStyle(color: Colors.black, fontSize: 18),
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'RG',
-              labelStyle: TextStyle(color: Colors.black, fontSize: 16),
-            ),
-            keyboardType: TextInputType.number,
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-          ),
+          CamposFormulario(
+              nomeLabel: 'RG',
+              nomeCampo: txtRg,
+              keyboardType: TextInputType.number,
+              inputFormato: FilteringTextInputFormatter.digitsOnly),
           SizedBox(height: 10),
-          TextField(
-            controller: txtCpf,
-            style: TextStyle(color: Colors.black, fontSize: 18),
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'CPF',
-              labelStyle: TextStyle(color: Colors.black, fontSize: 16),
-            ),
-            keyboardType: TextInputType.number,
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-          ),
+          CamposFormulario(
+              nomeLabel: 'CPF',
+              nomeCampo: txtCpf,
+              keyboardType: TextInputType.number,
+              inputFormato: FilteringTextInputFormatter.digitsOnly),
           SizedBox(height: 10),
-          TextField(
-            controller: txtEndereco,
-            style: TextStyle(color: Colors.black, fontSize: 18),
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Endereço',
-              labelStyle: TextStyle(color: Colors.black, fontSize: 16),
-            ),
-          ),
+          CamposFormulario(nomeLabel: 'Endereço', nomeCampo: txtEndereco),
           SizedBox(height: 10),
-          TextField(
-            controller: txtTelefone,
-            style: TextStyle(color: Colors.black, fontSize: 18),
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Telefone',
-              labelStyle: TextStyle(color: Colors.black, fontSize: 16),
-            ),
-            keyboardType: TextInputType.number,
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-          ),
+          CamposFormulario(
+              nomeLabel: 'Telefone',
+              nomeCampo: txtTelefone,
+              keyboardType: TextInputType.number,
+              inputFormato: FilteringTextInputFormatter.digitsOnly),
           SizedBox(height: 10),
-          TextField(
-            controller: txtMoto,
-            style: TextStyle(color: Colors.black, fontSize: 18),
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Moto',
-              labelStyle: TextStyle(color: Colors.black, fontSize: 16),
-            ),
-          ),
+          CamposFormulario(nomeLabel: 'Moto', nomeCampo: txtMoto),
           SizedBox(height: 10),
-          TextField(
-            controller: txtPlaca,
-            style: TextStyle(color: Colors.black, fontSize: 18),
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Placa',
-              labelStyle: TextStyle(color: Colors.black, fontSize: 16),
-            ),
-          ),
+          CamposFormulario(nomeLabel: 'Placa', nomeCampo: txtPlaca),
           SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
