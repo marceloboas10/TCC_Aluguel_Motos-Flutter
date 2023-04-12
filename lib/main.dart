@@ -1,6 +1,6 @@
 import 'package:aluguel_moto/cadastros/cadastroConta.dart';
 import 'package:aluguel_moto/formularios/form_veiculo.dart';
-import 'package:aluguel_moto/telas/menu.dart';
+import 'package:aluguel_moto/telas/home_page.dart';
 import 'package:aluguel_moto/telas/sobre.dart';
 import 'package:aluguel_moto/telas/telaLogin.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -19,11 +19,12 @@ Future<void> main() async {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     //theme: ThemeData(primarySwatch: Colors.amber),
-    initialRoute: '/menu',
+    initialRoute: '/home_page',
     routes: {
       '/telaLogin': (context) => TelaLogin(),
       '/cadastroConta': (context) => CadastroConta(),
-      '/menu': (context)=> TelaMenu(),
+      '/home_page':(context) => HomePage(),
+      //'/menu': (context)=> TelaMenu(),
       '/cadastroCliente': (context) => CadastroCliente(),
       '/form_cliente': (context) => FormCliente(),
       '/cadastroVeiculo': (context) => CadastroVeiculo(),
