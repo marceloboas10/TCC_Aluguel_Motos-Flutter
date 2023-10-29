@@ -1,4 +1,4 @@
-import 'package:aluguel_moto/formularios/campos_formulario/campos_formulario.dart';
+import 'package:aluguel_moto/shared/formularios/campos_formulario/campos_formulario.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

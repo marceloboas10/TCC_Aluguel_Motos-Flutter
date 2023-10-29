@@ -11,6 +11,7 @@ class Clientes {
   late String complemento;
   late String bairro;
   late String cidade;
+  late String? motoAlugada;
 
 //CONSTRUTOR
   Clientes(
@@ -26,6 +27,7 @@ class Clientes {
     this.complemento,
     this.bairro,
     this.cidade,
+    this.motoAlugada
   );
 
 //CONVERTER UM DOCUMENTO EM OBJETO
@@ -42,6 +44,7 @@ class Clientes {
     this.complemento = mapa['Complemento'];
     this.bairro = mapa['Bairro'];
     this.cidade = mapa['Cidade'];
+    this.motoAlugada = mapa['Moto_alugada'];
   }
 
   Map<String, dynamic> toJson() {
@@ -58,6 +61,7 @@ class Clientes {
       'complemento': this.complemento,
       'bairro': this.bairro,
       'cidade': this.cidade,
+      'moto_alugada': this.motoAlugada,
     };
   }
 

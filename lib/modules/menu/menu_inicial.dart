@@ -1,9 +1,9 @@
-import 'package:aluguel_moto/constants.dart';
-import 'package:aluguel_moto/funcoes/saudacao.dart';
+import 'package:aluguel_moto/shared/constants.dart';
+import 'package:aluguel_moto/shared/widgets/funcoes/saudacao.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../widgets/card_menu.dart';
+import '../../shared/widgets/card_menu.dart';
 
 class MenuInicial extends StatefulWidget {
   const MenuInicial({
@@ -25,7 +25,15 @@ class _MenuInicialState extends State<MenuInicial> {
           height: size.height * 0.12,
           width: size.width * 0.9,
           child: Row(
-            children: [],
+            children: [
+              Text(
+                boasVindas(),
+                style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w500,
+                    color: kTextColor),
+              )
+            ],
           ),
         ),
         Row(
@@ -70,7 +78,9 @@ class _MenuInicialState extends State<MenuInicial> {
             CardMenu(
               nomeCard: 'Lembretes',
               icon: FaIcon(FontAwesomeIcons.accessibleIcon),
-              navigator: () {},
+              navigator: () {
+                Navigator.pushNamed(context, '/cadastroLembretes');
+              },
             ),
           ],
         )

@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:aluguel_moto/formularios/campos_formulario/campos_formulario.dart';
+import 'package:aluguel_moto/shared/formularios/campos_formulario/campos_formulario.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -21,8 +21,11 @@ class _FormClienteState extends State<FormCliente> {
   var txtBairro = TextEditingController();
   var txtCidade = TextEditingController();
   var txtTelefone = TextEditingController();
-
+  var txtTelefoneReferencia = TextEditingController();
+  var txtTelefoneReferencia2 = TextEditingController();
   var txtValidadeCnh = TextEditingController();
+  var txtmotoAlugada = TextEditingController();
+  String placaSelecionada = '0';
 
   //RECUPERAR documento
   void getDocumentById(String id) async {
@@ -36,12 +39,15 @@ class _FormClienteState extends State<FormCliente> {
       txtCpf.text = valor.get('CPF');
       txtValidadeCnh.text = valor.get('Validade_CNH');
       txtTelefone.text = valor.get('Telefone');
+      txtTelefoneReferencia.text = valor.get('Telefone_referencia');
+      txtTelefoneReferencia2.text = valor.get('Telefone_referencia2');
       txtCep.text = valor.get('CEP');
       txtEndereco.text = valor.get('Endereço');
       txtNumeroCasa.text = valor.get('Numero_Casa');
       txtComplemento.text = valor.get('Complemento');
       txtBairro.text = valor.get('Bairro');
       txtCidade.text = valor.get('Cidade');
+      placaSelecionada = valor.get('Moto_alugada');
     });
   }
 
@@ -71,9 +77,9 @@ class _FormClienteState extends State<FormCliente> {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.only(top: 15, left: 10, right: 10),
+              padding: EdgeInsets.only(top: 3, left: 10, right: 10),
               width: double.infinity,
-              height: 250,
+              height: 310,
               child: Card(
                 elevation: 4,
                 child: Padding(
@@ -106,11 +112,25 @@ class _FormClienteState extends State<FormCliente> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           CamposFormulario(
-                              nomeLabel: 'Telefone',
+                              nomeLabel: 'Telefone 1',
                               nomeCampo: txtTelefone,
                               keyboardType: TextInputType.number,
                               inputFormato:
                                   FilteringTextInputFormatter.digitsOnly),
+                          CamposFormulario(
+                              nomeLabel: 'Telefone 2',
+                              nomeCampo: txtTelefoneReferencia),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CamposFormulario(
+                              nomeLabel: 'Telefone 3',
+                              nomeCampo: txtTelefoneReferencia2),
                           CamposFormulario(
                               nomeLabel: 'Validade CNH',
                               nomeCampo: txtValidadeCnh,
@@ -124,10 +144,12 @@ class _FormClienteState extends State<FormCliente> {
                 ),
               ),
             ),
+
+            //ENDEREÇO CADASTRAIS
             Container(
-              padding: EdgeInsets.only(top: 30, left: 10, right: 10),
+              padding: EdgeInsets.only(left: 10, right: 10),
               width: double.infinity,
-              height: 450,
+              height: 413,
               child: Card(
                 elevation: 4,
                 child: Padding(
@@ -135,7 +157,7 @@ class _FormClienteState extends State<FormCliente> {
                   child: ListView(
                     children: [
                       SizedBox(
-                        width: 145,
+                        width: 135,
                         child: TextField(
                           controller: txtCep,
                           onChanged: (String value) async {
@@ -163,7 +185,7 @@ class _FormClienteState extends State<FormCliente> {
                         ),
                       ),
                       SizedBox(
-                        height: 10,
+                        height: 7,
                       ),
                       SizedBox(
                         width: 280,
@@ -182,7 +204,7 @@ class _FormClienteState extends State<FormCliente> {
                         ),
                       ),
                       SizedBox(
-                        height: 10,
+                        height: 7,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -219,44 +241,96 @@ class _FormClienteState extends State<FormCliente> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: 7),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          SizedBox(
-                            width: 200,
-                            child: TextField(
-                              controller: txtBairro,
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 16),
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(),
-                                labelText: 'Bairro',
-                                labelStyle: TextStyle(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                              width: 200,
+                              child: TextField(
+                                controller: txtBairro,
+                                style: TextStyle(
                                     color: Colors.black, fontSize: 16),
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: 'Bairro',
+                                  labelStyle: TextStyle(
+                                      color: Colors.black, fontSize: 16),
+                                ),
+                                inputFormatters: [],
                               ),
-                              inputFormatters: [],
                             ),
-                          ),
-                          SizedBox(
-                            width: 150,
-                            child: TextField(
-                              controller: txtCidade,
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 16),
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(),
-                                labelText: 'Cidade',
-                                labelStyle: TextStyle(
+                            SizedBox(
+                              width: 150,
+                              child: TextField(
+                                controller: txtCidade,
+                                style: TextStyle(
                                     color: Colors.black, fontSize: 16),
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: 'Cidade',
+                                  labelStyle: TextStyle(
+                                      color: Colors.black, fontSize: 16),
+                                ),
+                                inputFormatters: [],
                               ),
-                              inputFormatters: [],
                             ),
-                          ),
-                        ],
-                      ),
+                          ]),
                       SizedBox(
-                        height: 70,
+                          width: 150,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 7, top: 7),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  height: 7,
+                                ),
+                                Text('Moto Alugada'),
+                                StreamBuilder<QuerySnapshot>(
+                                    stream: FirebaseFirestore.instance
+                                        .collection('veiculos')
+                                        .snapshots(),
+                                    builder: (context, snapshot) {
+                                      List<DropdownMenuItem> placasVeiculos =
+                                          [];
+                                      if (!snapshot.hasData) {
+                                        const CircularProgressIndicator();
+                                      } else {
+                                        final placas = snapshot
+                                            .data?.docs.reversed
+                                            .toList();
+                                        placasVeiculos.add(
+                                          const DropdownMenuItem(
+                                            value: '0',
+                                            child: Text('Motos Disponíveis'),
+                                          ),
+                                        );
+                                        for (var placa in placas!) {
+                                          placasVeiculos.add(
+                                            DropdownMenuItem(
+                                              value: placa.get('Placa'),
+                                              child: Text(placa['Placa']),
+                                            ),
+                                          );
+                                        }
+                                      }
+
+                                      return DropdownButton<dynamic>(
+                                        items: placasVeiculos,
+                                        onChanged: (placaValue) {
+                                          setState(() {
+                                            placaSelecionada = placaValue;
+                                          });
+                                        },
+                                        value: placaSelecionada,
+                                      );
+                                    }),
+                              ],
+                            ),
+                          )),
+                      SizedBox(
+                        height: 1,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -277,6 +351,10 @@ class _FormClienteState extends State<FormCliente> {
                                     'RG': txtRg.text,
                                     'CPF': txtCpf.text,
                                     'Telefone': txtTelefone.text,
+                                    'Telefone_referencia':
+                                        txtTelefoneReferencia.text,
+                                    'Telefone_referencia2':
+                                        txtTelefoneReferencia.text,
                                     'Validade_CNH': txtValidadeCnh.text,
                                     'CEP': txtCep.text,
                                     'Endereço': txtEndereco.text,
@@ -284,6 +362,7 @@ class _FormClienteState extends State<FormCliente> {
                                     'Complemento': txtComplemento.text,
                                     'Bairro': txtBairro.text,
                                     'Cidade': txtCidade.text,
+                                    'Moto_Alugada': placaSelecionada,
                                   });
                                 } else {
                                   //ATUALIZA DOCUMENTO
@@ -295,6 +374,10 @@ class _FormClienteState extends State<FormCliente> {
                                     'RG': txtRg.text,
                                     'CPF': txtCpf.text,
                                     'Telefone': txtTelefone.text,
+                                    'Telefone_referencia':
+                                        txtTelefoneReferencia.text,
+                                    'Telefone_referencia2':
+                                        txtTelefoneReferencia.text,
                                     'Validade_CNH': txtValidadeCnh.text,
                                     'CEP': txtCep.text,
                                     'Endereço': txtEndereco.text,
@@ -302,6 +385,7 @@ class _FormClienteState extends State<FormCliente> {
                                     'Complemento': txtComplemento.text,
                                     'Bairro': txtBairro.text,
                                     'Cidade': txtCidade.text,
+                                    'Moto_alugada': placaSelecionada,
                                   });
                                 }
                                 Navigator.pop(context);

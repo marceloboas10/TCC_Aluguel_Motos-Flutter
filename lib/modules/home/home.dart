@@ -1,16 +1,16 @@
-import 'package:aluguel_moto/telas/menu_inicial.dart';
-import 'package:aluguel_moto/widgets/menu_drawer.dart';
+import 'package:aluguel_moto/modules/menu/menu_inicial.dart';
+import 'package:aluguel_moto/shared/widgets/menu_drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class Home extends StatefulWidget {
+  const Home({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<Home> createState() => _HomeState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeState extends State<Home> {
   //Menu Drawer
   final drawerHeader = UserAccountsDrawerHeader(
     accountName: Text('Marcelo Vilas Boas'),
@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           title: Text('Menu'),
           centerTitle: true,
-          backgroundColor: Colors.cyan[600],
+          //backgroundColor: kPrimaryColor,
           actions: [
             IconButton(
                 icon: Icon(Icons.logout),

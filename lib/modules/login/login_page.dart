@@ -1,12 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class TelaLogin extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
-  _TelaLoginState createState() => _TelaLoginState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _TelaLoginState extends State<TelaLogin> {
+class _LoginPageState extends State<LoginPage> {
   var txtEmail = TextEditingController();
   var txtSenha = TextEditingController();
   bool isloading = false;
@@ -23,7 +23,7 @@ class _TelaLoginState extends State<TelaLogin> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Image.asset(
-                'lib/imagens/logo1.png',
+                'images/logo1.png',
                 height: 100,
               ),
               Padding(padding: EdgeInsets.only(top: 15)),

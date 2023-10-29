@@ -1,15 +1,14 @@
-import 'package:aluguel_moto/cadastros/cadastroConta.dart';
-import 'package:aluguel_moto/formularios/form_veiculo.dart';
-import 'package:aluguel_moto/telas/home_page.dart';
-import 'package:aluguel_moto/telas/sobre.dart';
-import 'package:aluguel_moto/telas/telaLogin.dart';
+import 'package:aluguel_moto/shared/cadastros/cadastro_conta.dart';
+import 'package:aluguel_moto/shared/formularios/form_veiculo.dart';
+import 'package:aluguel_moto/modules/home/home.dart';
+import 'package:aluguel_moto/modules/sobre/sobre.dart';
+import 'package:aluguel_moto/modules/login/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:aluguel_moto/cadastros/cadastroCliente.dart';
-import 'package:aluguel_moto/cadastros/cadastroVeiculo.dart';
-import 'package:aluguel_moto/formularios/form_cliente.dart';
-import 'cadastros/cadastroLembretes.dart';
-
+import 'package:aluguel_moto/shared/cadastros/cadastro_cliente.dart';
+import 'package:aluguel_moto/shared/cadastros/cadastro_veiculo.dart';
+import 'package:aluguel_moto/shared/formularios/form_cliente.dart';
+import 'shared/cadastros/cadastro_lembretes.dart';
 
 Future<void> main() async {
   //Registrar Firebase
@@ -18,12 +17,15 @@ Future<void> main() async {
 
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    //theme: ThemeData(primarySwatch: Colors.amber),
+    theme: ThemeData(
+        
+        //colorScheme: ColorScheme.fromSeed(seedColor: kTextColor),
+        appBarTheme: AppBarTheme(backgroundColor: Colors.amber)),
     initialRoute: '/home_page',
     routes: {
-      '/telaLogin': (context) => TelaLogin(),
+      '/telaLogin': (context) => LoginPage(),
       '/cadastroConta': (context) => CadastroConta(),
-      '/home_page':(context) => HomePage(),
+      '/home_page': (context) => Home(),
       //'/menu': (context)=> TelaMenu(),
       '/cadastroCliente': (context) => CadastroCliente(),
       '/form_cliente': (context) => FormCliente(),
@@ -32,8 +34,6 @@ Future<void> main() async {
       '/cadastroLembretes': (context) => CadastroLembretes(),
       '/sobre': (context) => Sobre(),
       '/cadastro': (context) => TelaCadastro(),
-     
-
     },
   ));
 }
