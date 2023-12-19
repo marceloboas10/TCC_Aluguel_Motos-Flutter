@@ -27,7 +27,11 @@ class _CadastroClienteState extends State<CadastroCliente> {
       child: ListTile(
         leading: Icon(Icons.person, color: Colors.black),
         title: Text(cliente.nome, style: TextStyle(fontSize: 20)),
-        subtitle: Text(cliente.cpf, style: TextStyle(fontSize: 18)),
+        subtitle: cliente.motoAlugada != '0'
+            ? Text('${cliente.cpf} Placa: ${cliente.motoAlugada}',
+                style: TextStyle(fontSize: 18))
+            : Text('${cliente.cpf}', style: TextStyle(fontSize: 18)),
+        isThreeLine: true,
         trailing: IconButton(
           icon: Icon(Icons.delete, color: Colors.black),
           onPressed: () {
@@ -47,7 +51,6 @@ class _CadastroClienteState extends State<CadastroCliente> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Clientes'),
-        backgroundColor: Colors.cyan[600],
         centerTitle: true,
       ),
 
@@ -83,7 +86,6 @@ class _CadastroClienteState extends State<CadastroCliente> {
 
       floatingActionButton: FloatingActionButton(
         foregroundColor: Colors.white,
-        backgroundColor: Colors.cyan[600],
         child: Icon(Icons.add),
         onPressed: () {
           Navigator.pushNamed(context, '/form_cliente');

@@ -3,12 +3,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class FormVeiculo extends StatefulWidget {
+class FormularioVeiculo extends StatefulWidget {
   @override
-  _FormVeiculoState createState() => _FormVeiculoState();
+  _FormularioVeiculoState createState() => _FormularioVeiculoState();
 }
 
-class _FormVeiculoState extends State<FormVeiculo> {
+class _FormularioVeiculoState extends State<FormularioVeiculo> {
   var txtFabricante = TextEditingController();
   var txtModelo = TextEditingController();
   var txtAno = TextEditingController();
@@ -48,30 +48,30 @@ class _FormVeiculoState extends State<FormVeiculo> {
       appBar: AppBar(
         title: Text('Cadastro Veículo'),
         centerTitle: true,
-        backgroundColor: Colors.cyan[600],
+        
       ),
       body: Container(
         padding: EdgeInsets.fromLTRB(30, 70, 30, 30),
         child: ListView(children: [
-          CamposFormulario(nomeLabel: 'Fabricante', nomeCampo: txtFabricante),
+          CamposFormulario(nomeLabel: 'Fabricante', nomeCampo: txtFabricante,inputFormato: FilteringTextInputFormatter.singleLineFormatter),
           SizedBox(
             height: 20,
           ),
-          CamposFormulario(nomeLabel: 'Modelo', nomeCampo: txtModelo),
+          CamposFormulario(nomeLabel: 'Modelo', nomeCampo: txtModelo,inputFormato: FilteringTextInputFormatter.singleLineFormatter),
           SizedBox(height: 10),
           CamposFormulario(
-              nomeLabel: 'Ano',
-              nomeCampo: txtAno,
-              keyboardType: TextInputType.number,
-              inputFormato: FilteringTextInputFormatter.digitsOnly),
+            nomeLabel: 'Ano',
+            nomeCampo: txtAno,
+            keyboardType: TextInputType.number,inputFormato: FilteringTextInputFormatter.singleLineFormatter
+          ),
           SizedBox(height: 20),
-          CamposFormulario(nomeLabel: 'Placa', nomeCampo: txtPlaca),
+          CamposFormulario(nomeLabel: 'Placa', nomeCampo: txtPlaca,inputFormato: FilteringTextInputFormatter.singleLineFormatter),
           SizedBox(height: 20),
           CamposFormulario(
-              nomeLabel: 'Renavam',
-              nomeCampo: txtRenavam,
-              keyboardType: TextInputType.number,
-              inputFormato: FilteringTextInputFormatter.digitsOnly),
+            nomeLabel: 'Renavam',
+            nomeCampo: txtRenavam,
+            keyboardType: TextInputType.number,inputFormato: FilteringTextInputFormatter.singleLineFormatter
+          ),
           SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

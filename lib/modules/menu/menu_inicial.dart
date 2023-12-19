@@ -2,7 +2,6 @@ import 'package:aluguel_moto/shared/constants.dart';
 import 'package:aluguel_moto/shared/widgets/funcoes/saudacao.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import '../../shared/widgets/card_menu.dart';
 
 class MenuInicial extends StatefulWidget {
@@ -37,6 +36,7 @@ class _MenuInicialState extends State<MenuInicial> {
           ),
         ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CardMenu(
               nomeCard: 'Clientes',
@@ -55,6 +55,7 @@ class _MenuInicialState extends State<MenuInicial> {
           ],
         ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CardMenu(
               nomeCard: 'Pagamentos',
@@ -69,6 +70,7 @@ class _MenuInicialState extends State<MenuInicial> {
           ],
         ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CardMenu(
               nomeCard: 'Revisão',
@@ -88,56 +90,3 @@ class _MenuInicialState extends State<MenuInicial> {
     );
   }
 }
-
-// MENU ANTIGO
-// Container(
-//       padding: EdgeInsets.all(40),
-//       child: ListView(
-//         children: [
-//           ListTile(
-//             leading: Icon(
-//               Icons.account_circle,
-//               color: Colors.black87,
-//             ),
-//             title: Text(
-//               'Clientes',
-//               style: TextStyle(
-//                 fontSize: 25,
-//                 color: Colors.black87,
-//               ),
-//             ),
-//             onTap: () {
-//               Navigator.pushNamed(context, '/cadastroCliente');
-//             },
-//           ),
-//           ListTile(
-//             leading: Icon(
-//               Icons.two_wheeler_rounded,
-//               color: Colors.black87,
-//             ),
-//             title: Text('Veículos',
-//                 style: TextStyle(
-//                   fontSize: 25,
-//                   color: Colors.black87,
-//                 )),
-//             onTap: () {
-//               Navigator.pushNamed(context, '/cadastroVeiculo');
-//             },
-//           ),
-//           ListTile(
-//             leading: Icon(
-//               Icons.support_agent,
-//               color: Colors.black87,
-//             ),
-//             title: Text('Suporte',
-//                 style: TextStyle(
-//                   fontSize: 25,
-//                   color: Colors.black87,
-//                 )),
-//             onTap: () {
-//               Navigator.pushNamed(context, '/sobre');
-//             },
-//           ),
-//         ],
-//       ),
-//     );

@@ -54,7 +54,6 @@ class _CadastroVeiculoState extends State<CadastroVeiculo> {
       appBar: AppBar(
         title: Text('Veículos'),
         centerTitle: true,
-        backgroundColor: Colors.cyan[600],
       ),
 
       //EXIBE OS DOCUMENTOS DA COLEÇÃO "CLIENTES"
@@ -89,7 +88,6 @@ class _CadastroVeiculoState extends State<CadastroVeiculo> {
 
       floatingActionButton: FloatingActionButton(
         foregroundColor: Colors.white,
-        backgroundColor: Colors.cyan[600],
         child: Icon(Icons.add),
         onPressed: () {
           Navigator.pushNamed(context, '/form_veiculo');

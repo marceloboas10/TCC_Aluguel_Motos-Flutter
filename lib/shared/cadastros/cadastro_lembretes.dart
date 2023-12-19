@@ -3,6 +3,7 @@ import 'package:aluguel_moto/model/lembretes.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 Future<void> main() async {
 //Registrar o Firebase
@@ -55,7 +56,6 @@ class _CadastroLembretesState extends State<CadastroLembretes> {
       appBar: AppBar(
         title: Text('Lembretes'),
         centerTitle: true,
-        backgroundColor: Colors.cyan[600],
       ),
       backgroundColor: Colors.brown[50],
       //EXIBIR os documentos da coleção de "lembretes"
@@ -88,7 +88,7 @@ class _CadastroLembretesState extends State<CadastroLembretes> {
 
       floatingActionButton: FloatingActionButton(
         foregroundColor: Colors.white,
-        backgroundColor: Colors.cyan[600],
+     
         child: Icon(Icons.add),
         onPressed: () {
           Navigator.pushNamed(context, '/cadastro');
@@ -135,7 +135,6 @@ class _TelaCadastroState extends State<TelaCadastro> {
       appBar: AppBar(
         title: Text('Lembretes'),
         centerTitle: true,
-        backgroundColor: Colors.cyan[600],
         automaticallyImplyLeading: false,
       ),
       backgroundColor: Colors.brown[50],
@@ -143,11 +142,11 @@ class _TelaCadastroState extends State<TelaCadastro> {
         padding: EdgeInsets.all(30),
         child: ListView(
           children: [
-            CamposFormulario(nomeLabel: 'Serviço', nomeCampo: txtServico),
+            CamposFormulario(nomeLabel: 'Serviço', nomeCampo: txtServico,inputFormato: FilteringTextInputFormatter.singleLineFormatter),
             SizedBox(
               height: 20,
             ),
-            CamposFormulario(nomeLabel: 'Descrição', nomeCampo: txtDescricao),
+            CamposFormulario(nomeLabel: 'Descrição', nomeCampo: txtDescricao,inputFormato: FilteringTextInputFormatter.singleLineFormatter),
             SizedBox(height: 50),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
