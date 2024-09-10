@@ -36,7 +36,6 @@ class _HomeState extends State<Home> {
             style: TextStyle(color: Colors.white, fontSize: 24),
           ),
           centerTitle: true,
-          backgroundColor: kAppBarColor,
           actions: [
             IconButton(
                 icon: Icon(Icons.logout),

@@ -1,4 +1,5 @@
 import 'package:aluguel_moto/shared/cadastros/cadastro_conta.dart';
+import 'package:aluguel_moto/shared/constantes/constants.dart';
 import 'package:aluguel_moto/shared/formularios/formulario_veiculo.dart';
 import 'package:aluguel_moto/modules/home/home.dart';
 import 'package:aluguel_moto/modules/sobre/sobre.dart';
@@ -20,7 +21,7 @@ Future<void> main() async {
     theme: ThemeData(
 
         //colorScheme: ColorScheme.fromSeed(seedColor: kTextColor),
-        appBarTheme: AppBarTheme(backgroundColor: Colors.red)),
+        appBarTheme: AppBarTheme(backgroundColor: kAppBarColor)),
     initialRoute: '/home_page',
     routes: {
       '/telaLogin': (context) => LoginPage(),

@@ -76,7 +76,7 @@ class _FormularioClienteState extends State<FormularioCliente> {
         backgroundColor: Colors.grey.shade300,
         appBar: MyAppBar(title: "Cadastro Clientes"),
         body: Container(
-          padding: EdgeInsets.only(top: 3, left: 10, right: 10),
+          padding: EdgeInsets.only(left: 10, right: 10),
           width: double.infinity,
           height: MediaQuery.of(context).size.height,
           child: Padding(
@@ -84,11 +84,17 @@ class _FormularioClienteState extends State<FormularioCliente> {
             child: ListView(
               shrinkWrap: true,
               children: [
-                CamposFormulario(
-                  nomeLabel: 'Nome',
-                  message: 'Preencha o Nome',
-                  nomeCampo: txtNome,
-                  inputFormato: FilteringTextInputFormatter.singleLineFormatter,
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 8.0,
+                  ),
+                  child: CamposFormulario(
+                    nomeLabel: 'Nome',
+                    message: 'Preencha o Nome',
+                    nomeCampo: txtNome,
+                    inputFormato:
+                        FilteringTextInputFormatter.singleLineFormatter,
+                  ),
                 ),
                 SizedBox(height: 10),
                 Row(
