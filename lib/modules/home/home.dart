@@ -1,4 +1,5 @@
 import 'package:aluguel_moto/modules/menu/menu_inicial.dart';
+import 'package:aluguel_moto/shared/constantes/constants.dart';
 import 'package:aluguel_moto/shared/widgets/menu_drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -29,9 +30,13 @@ class _HomeState extends State<Home> {
           child: MenuDrawer(drawerHeader: drawerHeader),
         ),
         appBar: AppBar(
-          title: Text('Menu'),
+          iconTheme: IconThemeData(color: Colors.white),
+          title: Text(
+            'MOTAPP',
+            style: TextStyle(color: Colors.white, fontSize: 24),
+          ),
           centerTitle: true,
-          //backgroundColor: kPrimaryColor,
+          backgroundColor: kAppBarColor,
           actions: [
             IconButton(
                 icon: Icon(Icons.logout),

@@ -1,4 +1,5 @@
 import 'package:aluguel_moto/shared/formularios/campos_formulario/campos_formulario.dart';
+import 'package:aluguel_moto/shared/widgets/my_app_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,6 +15,7 @@ class _FormularioVeiculoState extends State<FormularioVeiculo> {
   var txtAno = TextEditingController();
   var txtPlaca = TextEditingController();
   var txtRenavam = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   //RECUPERA DOCUMENTO
   void getDocumentById(String id) async {
@@ -44,83 +46,105 @@ class _FormularioVeiculoState extends State<FormularioVeiculo> {
       }
     }
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Cadastro Veículo'),
-        centerTitle: true,
-        
-      ),
-      body: Container(
-        padding: EdgeInsets.fromLTRB(30, 70, 30, 30),
-        child: ListView(children: [
-          CamposFormulario(nomeLabel: 'Fabricante', nomeCampo: txtFabricante,inputFormato: FilteringTextInputFormatter.singleLineFormatter),
-          SizedBox(
-            height: 20,
-          ),
-          CamposFormulario(nomeLabel: 'Modelo', nomeCampo: txtModelo,inputFormato: FilteringTextInputFormatter.singleLineFormatter),
-          SizedBox(height: 10),
-          CamposFormulario(
-            nomeLabel: 'Ano',
-            nomeCampo: txtAno,
-            keyboardType: TextInputType.number,inputFormato: FilteringTextInputFormatter.singleLineFormatter
-          ),
-          SizedBox(height: 20),
-          CamposFormulario(nomeLabel: 'Placa', nomeCampo: txtPlaca,inputFormato: FilteringTextInputFormatter.singleLineFormatter),
-          SizedBox(height: 20),
-          CamposFormulario(
-            nomeLabel: 'Renavam',
-            nomeCampo: txtRenavam,
-            keyboardType: TextInputType.number,inputFormato: FilteringTextInputFormatter.singleLineFormatter
-          ),
-          SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                padding: EdgeInsets.all(5),
-                width: 150,
-                child: OutlinedButton(
-                  child: Text('salvar'),
-                  onPressed: () {
-                    var db = FirebaseFirestore.instance;
-
-                    if (id == null) {
-                      //ADICIONAR UM NOVO DOCUMENTO
+    return Form(
+      key: _formKey,
+      child: Scaffold(
+        appBar: MyAppBar(title: "Cadastro Veículo"),
+        body: Container(
+          padding: EdgeInsets.fromLTRB(30, 70, 30, 30),
+          child: ListView(children: [
+            CamposFormulario(
+                nomeLabel: 'Marca',
+                message: 'Informe o Nome',
+                nomeCampo: txtFabricante,
+                inputFormato: FilteringTextInputFormatter.singleLineFormatter),
+            SizedBox(
+              height: 20,
+            ),
+            CamposFormulario(
+                nomeLabel: 'Modelo',
+                message: 'Informe o Modelo',
+                nomeCampo: txtModelo,
+                inputFormato: FilteringTextInputFormatter.singleLineFormatter),
+            SizedBox(height: 10),
+            CamposFormulario(
+                nomeLabel: 'Ano',
+                message: 'Informe o Ano',
+                nomeCampo: txtAno,
+                keyboardType: TextInputType.number,
+                inputFormato: FilteringTextInputFormatter.singleLineFormatter),
+            SizedBox(height: 20),
+            CamposFormulario(
+                nomeLabel: 'Placa',
+                message: 'Informe a Placa',
+                nomeCampo: txtPlaca,
+                inputFormato: FilteringTextInputFormatter.singleLineFormatter),
+            SizedBox(height: 20),
+            CamposFormulario(
+                nomeLabel: 'Renavam',
+                message: 'Informe o Renavam',
+                nomeCampo: txtRenavam,
+                keyboardType: TextInputType.number,
+                inputFormato: FilteringTextInputFormatter.singleLineFormatter),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  padding: EdgeInsets.all(5),
+                  width: 150,
+                  child: OutlinedButton(
+                    child: Text('salvar'),
+                    onPressed: () {
+                      var formValid =
+                          _formKey.currentState?.validate() ?? false;
+                      var mensagemSnack =
+                          'Formulário Incompleto\nVerifique os Campos';
                       var db = FirebaseFirestore.instance;
-                      db.collection('veiculos').add({
-                        'Fabricante': txtFabricante.text,
-                        'Modelo': txtModelo.text,
-                        'Ano': txtAno.text,
-                        'Placa': txtPlaca.text,
-                        'Renavam': txtRenavam.text,
-                      });
-                    } else {
-                      //ATUALIZA DOCUMENTO
-                      db.collection('veiculos').doc(id.toString()).update({
-                        'Fabricante': txtFabricante.text,
-                        'Modelo': txtModelo.text,
-                        'Ano': txtAno.text,
-                        'Placa': txtPlaca.text,
-                        'Renavam': txtRenavam.text,
-                      });
-                    }
-                    Navigator.pop(context);
-                  },
+
+                      if (formValid) {
+                        if (id == null) {
+                          //ADICIONAR UM NOVO DOCUMENTO
+                          var db = FirebaseFirestore.instance;
+                          db.collection('veiculos').add({
+                            'Fabricante': txtFabricante.text,
+                            'Modelo': txtModelo.text,
+                            'Ano': txtAno.text,
+                            'Placa': txtPlaca.text,
+                            'Renavam': txtRenavam.text,
+                          });
+                        } else {
+                          //ATUALIZA DOCUMENTO
+                          db.collection('veiculos').doc(id.toString()).update({
+                            'Fabricante': txtFabricante.text,
+                            'Modelo': txtModelo.text,
+                            'Ano': txtAno.text,
+                            'Placa': txtPlaca.text,
+                            'Renavam': txtRenavam.text,
+                          });
+                        }
+                        Navigator.pop(context);
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text(mensagemSnack)));
+                      }
+                    },
+                  ),
                 ),
-              ),
-              Container(
-                padding: EdgeInsets.all(5),
-                width: 150,
-                child: OutlinedButton(
-                  child: Text('cancelar'),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
+                Container(
+                  padding: EdgeInsets.all(5),
+                  width: 150,
+                  child: OutlinedButton(
+                    child: Text('cancelar'),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ]),
+              ],
+            ),
+          ]),
+        ),
       ),
     );
   }

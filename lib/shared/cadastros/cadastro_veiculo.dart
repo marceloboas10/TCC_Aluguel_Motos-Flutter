@@ -1,4 +1,5 @@
 import 'package:aluguel_moto/model/veiculos.dart';
+import 'package:aluguel_moto/shared/widgets/my_app_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -51,10 +52,7 @@ class _CadastroVeiculoState extends State<CadastroVeiculo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Veículos'),
-        centerTitle: true,
-      ),
+      appBar: MyAppBar(title: "Veículos"),
 
       //EXIBE OS DOCUMENTOS DA COLEÇÃO "CLIENTES"
       body: Container(

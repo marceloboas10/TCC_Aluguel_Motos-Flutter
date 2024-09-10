@@ -1,5 +1,5 @@
-import 'package:aluguel_moto/shared/constants.dart';
-import 'package:aluguel_moto/shared/widgets/funcoes/saudacao.dart';
+import 'package:aluguel_moto/shared/constantes/constants.dart';
+import 'package:aluguel_moto/shared/funcoes/saudacao.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../shared/widgets/card_menu.dart';
@@ -40,13 +40,15 @@ class _MenuInicialState extends State<MenuInicial> {
           children: [
             CardMenu(
               nomeCard: 'Clientes',
+              cor: Colors.orange,
               icon: FaIcon(FontAwesomeIcons.userGroup),
               navigator: () {
                 Navigator.pushNamed(context, '/cadastroCliente');
               },
             ),
             CardMenu(
-              nomeCard: 'Veiculos',
+              nomeCard: 'Veículos',
+              cor: Colors.blue,
               icon: FaIcon(FontAwesomeIcons.motorcycle),
               navigator: () {
                 Navigator.pushNamed(context, '/cadastroVeiculo');
@@ -59,11 +61,13 @@ class _MenuInicialState extends State<MenuInicial> {
           children: [
             CardMenu(
               nomeCard: 'Pagamentos',
+              cor: Colors.green,
               icon: FaIcon(FontAwesomeIcons.creditCard),
               navigator: () {},
             ),
             CardMenu(
               nomeCard: 'Multas',
+              cor: Colors.pink,
               icon: FaIcon(FontAwesomeIcons.envelopesBulk),
               navigator: () {},
             ),
@@ -74,11 +78,13 @@ class _MenuInicialState extends State<MenuInicial> {
           children: [
             CardMenu(
               nomeCard: 'Revisão',
+              cor: Colors.red,
               icon: FaIcon(FontAwesomeIcons.a),
               navigator: () {},
             ),
             CardMenu(
               nomeCard: 'Lembretes',
+              cor: Colors.deepPurple,
               icon: FaIcon(FontAwesomeIcons.accessibleIcon),
               navigator: () {
                 Navigator.pushNamed(context, '/cadastroLembretes');

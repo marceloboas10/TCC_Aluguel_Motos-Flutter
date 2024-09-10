@@ -1,12 +1,11 @@
 import 'dart:convert';
 import 'package:aluguel_moto/shared/formularios/campos_formulario/campos_formulario.dart';
-import 'package:aluguel_moto/shared/widgets/funcoes/mascaras_formularios.dart';
-
+import 'package:aluguel_moto/shared/funcoes/mascaras_formularios.dart';
+import 'package:aluguel_moto/shared/widgets/my_app_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class FormularioCliente extends StatefulWidget {
   @override
@@ -75,10 +74,7 @@ class _FormularioClienteState extends State<FormularioCliente> {
       key: _formKey,
       child: Scaffold(
         backgroundColor: Colors.grey.shade300,
-        appBar: AppBar(
-          title: Text('Cadastro Cliente'),
-          centerTitle: true,
-        ),
+        appBar: MyAppBar(title: "Cadastro Clientes"),
         body: Container(
           padding: EdgeInsets.only(top: 3, left: 10, right: 10),
           width: double.infinity,
@@ -89,8 +85,8 @@ class _FormularioClienteState extends State<FormularioCliente> {
               shrinkWrap: true,
               children: [
                 CamposFormulario(
-                  message: 'Preencha o Nome',
                   nomeLabel: 'Nome',
+                  message: 'Preencha o Nome',
                   nomeCampo: txtNome,
                   inputFormato: FilteringTextInputFormatter.singleLineFormatter,
                 ),
@@ -99,14 +95,14 @@ class _FormularioClienteState extends State<FormularioCliente> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CamposFormulario(
-                        message: 'Preencha o RG',
                         nomeLabel: 'RG',
+                        message: 'Preencha o RG',
                         nomeCampo: txtRg,
                         keyboardType: TextInputType.number,
                         inputFormato: MascarasFormularios().rg),
                     CamposFormulario(
-                        message: 'Preencha o CPF',
                         nomeLabel: 'CPF',
+                        message: 'Preencha o CPF',
                         nomeCampo: txtCpf,
                         keyboardType: TextInputType.number,
                         inputFormato: MascarasFormularios().cpf),
@@ -119,8 +115,8 @@ class _FormularioClienteState extends State<FormularioCliente> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CamposFormulario(
-                        message: 'Preencha o Celular',
                         nomeLabel: 'Celular',
+                        message: 'Preencha o Celular',
                         nomeCampo: txtTelefone,
                         keyboardType: TextInputType.number,
                         inputFormato: MascarasFormularios().telefone),
@@ -144,8 +140,8 @@ class _FormularioClienteState extends State<FormularioCliente> {
                         inputFormato:
                             MascarasFormularios().telefoneResidencial),
                     CamposFormulario(
-                        message: 'Preencha a Validade',
                         nomeLabel: 'Validade CNH',
+                        message: 'Preencha a Validade',
                         nomeCampo: txtValidadeCnh,
                         keyboardType: TextInputType.number,
                         inputFormato: MascarasFormularios().validadeCnh),
@@ -163,6 +159,7 @@ class _FormularioClienteState extends State<FormularioCliente> {
                         }
                         return null;
                       },
+                      maxLength: 9,
                       controller: txtCep,
                       onChanged: (String value) async {
                         var cep = value;
@@ -343,7 +340,7 @@ class _FormularioClienteState extends State<FormularioCliente> {
                           var formValid =
                               _formKey.currentState?.validate() ?? false;
                           var mensagemSnack =
-                              'Formulário Incompleto\nReveja os Campos';
+                              'Formulário Incompleto\nVerifique os Campos';
                           var db = FirebaseFirestore.instance;
                           if (formValid) {
                             if (id == null) {

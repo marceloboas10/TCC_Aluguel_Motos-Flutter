@@ -72,8 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                   style: TextStyle(color: Colors.white),
                 ),
                 style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(Colors.red[700])),
+                    backgroundColor: WidgetStateProperty.all(Colors.red[700])),
               ),
               ElevatedButton(
                 child: Text(
@@ -81,8 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                   style: TextStyle(color: Colors.white),
                 ),
                 style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(Colors.red[600])),
+                    backgroundColor: WidgetStateProperty.all(Colors.red[600])),
                 onPressed: () {
                   Navigator.pushNamed(context, '/cadastroConta');
                 },

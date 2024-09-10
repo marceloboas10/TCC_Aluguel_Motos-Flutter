@@ -1,5 +1,6 @@
 import 'package:aluguel_moto/shared/formularios/campos_formulario/campos_formulario.dart';
 import 'package:aluguel_moto/model/lembretes.dart';
+import 'package:aluguel_moto/shared/widgets/my_app_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -53,10 +54,7 @@ class _CadastroLembretesState extends State<CadastroLembretes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Lembretes'),
-        centerTitle: true,
-      ),
+      appBar: MyAppBar(title: "Lembretes"),
       backgroundColor: Colors.brown[50],
       //EXIBIR os documentos da coleção de "lembretes"
       body: Container(
@@ -88,7 +86,6 @@ class _CadastroLembretesState extends State<CadastroLembretes> {
 
       floatingActionButton: FloatingActionButton(
         foregroundColor: Colors.white,
-     
         child: Icon(Icons.add),
         onPressed: () {
           Navigator.pushNamed(context, '/cadastro');
@@ -132,21 +129,23 @@ class _TelaCadastroState extends State<TelaCadastro> {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Lembretes'),
-        centerTitle: true,
-        automaticallyImplyLeading: false,
-      ),
+      appBar: MyAppBar(title: "Lembretes"),
       backgroundColor: Colors.brown[50],
       body: Container(
         padding: EdgeInsets.all(30),
         child: ListView(
           children: [
-            CamposFormulario(nomeLabel: 'Serviço', nomeCampo: txtServico,inputFormato: FilteringTextInputFormatter.singleLineFormatter),
+            CamposFormulario(
+                nomeLabel: 'Serviço',
+                nomeCampo: txtServico,
+                inputFormato: FilteringTextInputFormatter.singleLineFormatter),
             SizedBox(
               height: 20,
             ),
-            CamposFormulario(nomeLabel: 'Descrição', nomeCampo: txtDescricao,inputFormato: FilteringTextInputFormatter.singleLineFormatter),
+            CamposFormulario(
+                nomeLabel: 'Descrição',
+                nomeCampo: txtDescricao,
+                inputFormato: FilteringTextInputFormatter.singleLineFormatter),
             SizedBox(height: 50),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

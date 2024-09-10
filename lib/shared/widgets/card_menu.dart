@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import '../constants.dart';
+import '../constantes/constants.dart';
 
 class CardMenu extends StatelessWidget {
   const CardMenu(
       {super.key,
+      required this.cor,
       required this.nomeCard,
       required this.icon,
       required this.navigator});
 
+  final Color cor;
   final String nomeCard;
   final Widget icon;
   final VoidCallback navigator;
@@ -20,14 +22,20 @@ class CardMenu extends StatelessWidget {
       child: Container(
         width: 150,
         height: 150,
+        color: cor,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
               onPressed: navigator,
               icon: icon,
+              iconSize: 38,
+              color: Colors.white,
             ),
-            Text(nomeCard),
+            Text(
+              nomeCard,
+              style: TextStyle(fontSize: 20, color: Colors.white),
+            ),
           ],
         ),
       ),
