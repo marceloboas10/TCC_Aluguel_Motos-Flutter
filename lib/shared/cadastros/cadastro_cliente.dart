@@ -26,7 +26,11 @@ class _CadastroClienteState extends State<CadastroCliente> {
     return Container(
       padding: EdgeInsets.all(5),
       child: ListTile(
-        leading: Icon(Icons.person, color: Colors.black),
+        leading: Icon(
+          Icons.person,
+          color: Colors.black,
+          size: 40,
+        ),
         title: Text(cliente.nome, style: TextStyle(fontSize: 20)),
         subtitle: cliente.motoAlugada != '0'
             ? Text('${cliente.cpf} Placa: ${cliente.motoAlugada}',
@@ -34,10 +38,55 @@ class _CadastroClienteState extends State<CadastroCliente> {
             : Text('${cliente.cpf}', style: TextStyle(fontSize: 18)),
         isThreeLine: true,
         trailing: IconButton(
-          icon: Icon(Icons.delete, color: Colors.black),
+          icon: Icon(Icons.delete, color: Colors.black, size: 30),
           onPressed: () {
             //APAGAR DOCUMENTO
-            clientes.doc(cliente.id).delete();
+            showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                title: const Text(
+                  "Excluir Cliente",
+                  style: TextStyle(
+                      color: Colors.red,
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold),
+                ),
+                content: Text(
+                  "Tem certeza que deseja excluir ${cliente.nome}?",
+                  style: TextStyle(fontSize: 20),
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text(
+                      "Não",
+                      style: TextStyle(fontSize: 22),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'Cliente ${cliente.nome} excluído com sucesso!',
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      );
+                      clientes.doc(cliente.id).delete();
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text(
+                      "Sim",
+                      style: TextStyle(fontSize: 22),
+                    ),
+                  ),
+                ],
+              ),
+            );
           },
         ),
         onTap: () {
@@ -58,7 +107,7 @@ class _CadastroClienteState extends State<CadastroCliente> {
         child: StreamBuilder<QuerySnapshot>(
 
             //FONTE DE DADOS
-            stream: clientes.snapshots(),
+            stream: clientes.orderBy("Nome").snapshots(),
 
             //DEFINIR APARENCIA DOS DOCUMENTOS EXIBIDOS
             builder: (context, snapshot) {

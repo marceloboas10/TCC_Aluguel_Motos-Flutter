@@ -39,7 +39,52 @@ class _CadastroVeiculoState extends State<CadastroVeiculo> {
           icon: Icon(Icons.delete, color: Colors.black),
           onPressed: () {
             //APAGAR DOCUMENTO
-            veiculos.doc(veiculo.id).delete();
+            showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                      title: const Text(
+                        "Excluir Veículo",
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      content: Text(
+                        "Tem certeza que deseja excluir ${veiculo.placa}?",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: const Text(
+                            "Não",
+                            style: TextStyle(fontSize: 22),
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Veículo ${veiculo.placa} excluído com sucesso!',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            );
+                            veiculos.doc(veiculo.id).delete();
+                            Navigator.of(context).pop();
+                          },
+                          child: const Text(
+                            "Sim",
+                            style: TextStyle(fontSize: 22),
+                          ),
+                        ),
+                      ],
+                    ));
           },
         ),
         onTap: () {
