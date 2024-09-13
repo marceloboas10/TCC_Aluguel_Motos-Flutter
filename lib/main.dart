@@ -1,3 +1,4 @@
+import 'package:aluguel_moto/firebase_options.dart';
 import 'package:aluguel_moto/shared/cadastros/cadastro_conta.dart';
 import 'package:aluguel_moto/shared/constantes/constants.dart';
 import 'package:aluguel_moto/shared/formularios/formulario_veiculo.dart';
@@ -14,7 +15,7 @@ import 'shared/cadastros/cadastro_lembretes.dart';
 Future<void> main() async {
   //Registrar Firebase
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,

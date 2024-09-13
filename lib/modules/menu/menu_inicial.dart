@@ -77,7 +77,7 @@ class _MenuInicialState extends State<MenuInicial> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CardMenu(
-              nomeCard: 'Revisão',
+              nomeCard: 'Serviços',
               cor: Colors.red,
               icon: FaIcon(FontAwesomeIcons.a),
               navigator: () {},

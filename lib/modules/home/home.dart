@@ -1,5 +1,4 @@
 import 'package:aluguel_moto/modules/menu/menu_inicial.dart';
-import 'package:aluguel_moto/shared/constantes/constants.dart';
 import 'package:aluguel_moto/shared/widgets/menu_drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
